@@ -19,10 +19,10 @@ require_once __DIR__ . '/../assets.php';
                 <fieldset>
                     <legend>Convert audio to text</legend>
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 30px">
+                        <div class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 30px">
                             <input type="file" name="audio[]" id="audio" multiple>
                         </div>
-                        <div class="col-md-4 col-md-offset-4 col-sm-6 col-xs-12">
+                        <div class="col-md-3 col-md-offset-6 col-sm-6 col-xs-12">
                             <input class="btn btn-primary" type="submit" id="submit" value="Get the text file">
                         </div>
                     </div>

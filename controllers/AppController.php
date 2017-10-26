@@ -6,9 +6,9 @@ require_once __DIR__ . '/../models/GoogleSpeech.php';
 class AppController
 {
     /**
-     *
+     * @var string
      */
-    const API_KEY = '{YOUR_API_KEY}';
+    private $api_key = 'AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw';
 
     /**
      * @var array
@@ -23,6 +23,8 @@ class AppController
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_FILES['audio']['size'][0] != 0) {
             $this->filenames = Files::uploadFiles();
             $this->actionGetText();
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            exit ('Must select the audio files!');
         }
 
         include_once __DIR__ . '/../views/app.php';
@@ -40,7 +42,7 @@ class AppController
             $start_time = microtime(true);
 
             foreach ($this->filenames as $filename) {
-                $api = new GoogleSpeech(self::API_KEY);
+                $api = new GoogleSpeech($this->api_key);
                 $text = $api->voiceToText($filename);
                 Files::writeFile($text);
             }
