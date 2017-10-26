@@ -46,7 +46,7 @@ class AppController
             }
 
             $end_time = microtime(true);
-            exit('Request fulfilled, waiting time: ' . ($end_time - $start_time) . ' seconds') ;
+            exit('Request fulfilled, waiting time: ' . ($end_time - $start_time) . ' seconds');
         }
 
     }
