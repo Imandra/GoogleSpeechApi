@@ -6,9 +6,16 @@ require_once __DIR__ . '/../models/GoogleSpeech.php';
 class AppController
 {
     /**
+     * Google Speech API key
      * @var string
      */
-    private $api_key = 'AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw';
+    public $api_key = 'AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw';
+
+    /**
+     * Bitrate of audio files.
+     * @var int
+     */
+    public $rate = 22000;
 
     /**
      * @var array
@@ -42,8 +49,8 @@ class AppController
             $start_time = microtime(true);
 
             foreach ($this->filenames as $filename) {
-                $api = new GoogleSpeech($this->api_key);
-                $text = $api->voiceToText($filename);
+                $api = new GoogleSpeech();
+                $text = $api->voiceToText($filename, $this->api_key, $this->rate);
                 Files::writeFile($text);
             }
 
