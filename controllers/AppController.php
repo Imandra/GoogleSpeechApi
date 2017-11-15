@@ -48,8 +48,9 @@ class AppController
 
             $start_time = microtime(true);
 
+            $api = new GoogleSpeech();
+
             foreach ($this->filenames as $filename) {
-                $api = new GoogleSpeech();
                 $text = $api->voiceToText($filename, $this->api_key, $this->rate);
                 Files::writeFile($text);
             }
